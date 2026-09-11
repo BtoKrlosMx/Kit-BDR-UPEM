@@ -1,0 +1,111 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UPEM | Bases de Datos Relacionales | IS0737</title>
+<style>
+:root{--azul:#243d9b;--azul2:#182b72;--rojo:#ef6267;--rojo2:#d84e55;--tinta:#182335;--gris:#617083;--fondo:#f5f7fb;--line:#dfe5ef}
+*{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--fondo);color:var(--tinta)}
+header{color:#fff;background:linear-gradient(135deg,var(--azul2),var(--azul) 68%,#304eb5);position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:500px;height:500px;border-radius:50%;right:-220px;top:-300px;border:90px solid #ffffff12}
+.top{max-width:1220px;margin:auto;padding:13px 22px;border-bottom:1px solid #ffffff22;display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.4px}
+.brand{display:flex;align-items:center;gap:15px}.brand img{width:58px;height:58px;object-fit:contain;background:#fff;border-radius:10px;padding:3px}
+.hero{max-width:1220px;margin:auto;padding:38px 22px 55px;display:grid;grid-template-columns:1.6fr .9fr;gap:35px;align-items:center}
+.eyebrow{color:#fff;font-weight:800;letter-spacing:1.8px;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(34px,5.5vw,64px);line-height:1.03;margin:12px 0 15px}.hero p{font-size:18px;line-height:1.55;max-width:720px}
+.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{background:#fff14;border:1px solid #ffffff3b;border-radius:999px;padding:8px 12px;font-size:12px}
+.quick{background:#fff12;border:1px solid #ffffff30;border-radius:20px;padding:21px;backdrop-filter:blur(8px)}.quick h3{margin-top:0;color:#fff}
+.quickrow{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #ffffff22;font-size:13px}
+nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:3px solid var(--rojo);display:flex;gap:4px;padding:8px max(18px,calc((100% - 1180px)/2));overflow:auto;box-shadow:0 5px 20px #182b7212}
+nav button{border:0;background:transparent;color:var(--azul2);font-weight:800;padding:11px 14px;border-radius:9px;white-space:nowrap;cursor:pointer}
+nav button.active,nav button:hover{background:#eef1fc;color:var(--azul)}
+main{max-width:1220px;margin:30px auto;padding:0 18px}section{display:none}section.active{display:block}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px}.kpi,.panel,.card,.unit{background:#fff;border:1px solid var(--line);border-radius:17px}
+.kpi{padding:18px;border-top:4px solid var(--rojo)}.kpi b{display:block;font-size:28px;color:var(--azul)}.kpi span{font-size:12px;color:var(--gris)}
+.panel{padding:24px;margin-bottom:18px;box-shadow:0 8px 26px #1d32610b}h2{color:var(--azul2);font-size:27px;margin-top:0}h3{color:var(--azul2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}.card{padding:20px}.card h3{margin-top:0}
+.alert{background:#fff5e7;border:1px solid #efd39b;border-left:5px solid var(--rojo);padding:15px;border-radius:12px;margin-top:15px}
+.success{background:#eef8f3;border-color:#b9dec9;border-left-color:#27956b}
+.progress{height:14px;background:#e7ebf4;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:80%;background:linear-gradient(90deg,var(--azul),var(--rojo))}
+.week{display:grid;grid-template-columns:52px 160px 1fr 280px;gap:15px;align-items:center;border:1px solid var(--line);background:#fff;padding:13px 15px;margin:7px 0;border-radius:13px}
+.wn{font-weight:900;color:var(--azul);font-size:18px}.dates{font-size:12px;color:var(--gris)}.wcontent b{display:block;color:var(--azul2)}.wcontent span{font-size:13px;color:#536274}.deliver{font-size:12px;font-weight:900;color:var(--rojo2);text-align:right}
+.susp{background:#fff8ec}.vac{background:#f0f3f8}
+.unit{display:flex;gap:15px;padding:18px;align-items:flex-start}.unitnum{min-width:48px;height:48px;border-radius:12px;background:var(--azul);color:#fff;display:grid;place-items:center;font-weight:900}
+.unit h3{margin:0 0 5px}.unit p{margin:0 0 12px;color:var(--gris);line-height:1.5}.unit button{border:0;border-radius:9px;background:var(--azul);color:#fff;padding:9px 12px;font-weight:700;cursor:pointer}
+.dls{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}.dl{display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:var(--azul2);background:#fff;border:1px solid var(--line);padding:14px;border-radius:12px;font-weight:750}.dl:hover{border-color:var(--rojo)}
+footer{background:var(--azul2);color:#dfe5ff;text-align:center;padding:32px;margin-top:45px;font-size:12px;border-top:5px solid var(--rojo)}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.week{grid-template-columns:42px 1fr}.deliver{grid-column:2;text-align:left}}
+</style></head><body>
+<header><div class="top"><div class="brand"><img src="Escudo_UPEM.png" alt="Escudo UPEM"><b>UNIVERSIDAD PRIVADA DEL ESTADO DE MÉXICO</b></div><div>IS0737 · PERIODO 27/1</div></div>
+<div class="hero"><div><div class="eyebrow">Ingeniería · 7.º semestre</div><div class="badges"><span class="badge">Bases de Datos Relacionales</span><span class="badge">Formación teórico-práctica</span></div>
+<h1>Bienvenidos a<br>Bases de Datos</h1><p>Portal académico para organizar tu aprendizaje, laboratorio y proyecto integrador durante el periodo 27/1.</p></div>
+<div class="quick"><h3>Horario de la asignatura</h3><div class="quickrow"><span>Miércoles</span><b>16:00–19:00 · Laboratorio</b></div><div class="quickrow"><span>Viernes</span><b>17:00–19:00 · Aula</b></div><div class="quickrow"><span>Proyecto</span><b>10 avances + entrega final</b></div></div></div></header>
+<nav><button class="active" onclick="showTab('inicio',this)">Inicio</button><button onclick="showTab('encuadre',this)">Encuadre</button><button onclick="showTab('calendario',this)">Calendario</button><button onclick="showTab('proyecto',this)">Proyecto</button><button onclick="showTab('evaluacion',this)">Evaluación</button><button onclick="showTab('unidades',this)">Unidades</button><button onclick="showTab('descargas',this)">📥 Descargas</button></nav>
+<main>
+<section id="inicio" class="active"><div class="kpis"><div class="kpi"><b>15</b><span>semanas de trabajo</span></div><div class="kpi"><b>10</b><span>avances de proyecto</span></div><div class="kpi"><b>5</b><span>unidades</span></div><div class="kpi"><b>100%</b><span>evaluación total</span></div></div>
+<div class="panel"><h2>Un espacio para aprender haciendo</h2><p>La asignatura articula conceptos de bases de datos relacionales con actividades de laboratorio y un proyecto integrador que avanza semana a semana.</p>
+<div class="alert"><b>Fechas clave:</b> 16 de septiembre · suspensión de labores &nbsp;|&nbsp; 18 de septiembre · propuesta de proyecto &nbsp;|&nbsp; 25 de septiembre–11 de diciembre · avances &nbsp;|&nbsp; 16 de diciembre–1 de enero · vacaciones &nbsp;|&nbsp; 6 de enero · entrega final.</div></div>
+<div class="grid"><div class="card"><h3>🧪 Laboratorio</h3><p>Configuración, modelado, SQL, pruebas y desarrollo incremental.</p></div><div class="card"><h3>📚 Aula</h3><p>Conceptos, investigación, discusión y ejercicios prácticos.</p></div><div class="card"><h3>🐙 Control de versiones</h3><p>GitHub para organizar evidencias, cambios y documentación del proyecto.</p></div><div class="card"><h3>💻 Herramientas</h3><p>XAMPP · MySQL Workbench · GitHub · Python y Java.</p></div></div></section>
+<section id="encuadre"><div class="panel"><h2>Encuadre de trabajo</h2><div class="grid"><div class="card"><h3>Antes de clase</h3><p>Revisa la investigación o guía correspondiente y prepara tus dudas.</p></div><div class="card"><h3>Miércoles · 3 h</h3><p>Desarrolla la práctica de laboratorio, prueba y documenta resultados.</p></div><div class="card"><h3>Viernes · 2 h</h3><p>Consolida conceptos mediante explicación, análisis y ejercicios.</p></div><div class="card"><h3>Cierre semanal</h3><p>Entrega evidencia y actualiza el avance del proyecto correspondiente.</p></div></div></div></section>
+<section id="calendario"><div class="panel"><h2>Calendario académico</h2><p>Ruta semanal de actividades, contenidos y evidencias.</p><div class="week ">
+<div class="wn">01</div><div class="dates"><b>09 SEP</b> · Miércoles<br><b>11 SEP</b> · Viernes</div>
+<div class="wcontent"><b>Diagnóstico + instalación</b><span>Conceptos básicos y sistemas de BD</span></div>
+<div class="deliver">Preparación de entorno</div></div><div class="week susp">
+<div class="wn">02</div><div class="dates"><b>16 SEP</b> · Miércoles<br><b>18 SEP</b> · Viernes</div>
+<div class="wcontent"><b>SUSPENSIÓN</b><span>Niveles de abstracción, modelos, instancias y esquemas</span></div>
+<div class="deliver">PROPUESTA DE PROYECTO</div></div><div class="week ">
+<div class="wn">03</div><div class="dates"><b>23 SEP</b> · Miércoles<br><b>25 SEP</b> · Viernes</div>
+<div class="wcontent"><b>DDL: CREATE DATABASE / TABLE</b><span>DDL, DML y estructura global</span></div>
+<div class="deliver">Ejercicio #1 + AVANCE 1</div></div><div class="week ">
+<div class="wn">04</div><div class="dates"><b>30 SEP</b> · Miércoles<br><b>02 OCT</b> · Viernes</div>
+<div class="wcontent"><b>Modelado EER</b><span>Modelo Entidad-Relación</span></div>
+<div class="deliver">Ejercicio #2 + AVANCE 2</div></div><div class="week ">
+<div class="wn">05</div><div class="dates"><b>07 OCT</b> · Miércoles<br><b>09 OCT</b> · Viernes</div>
+<div class="wcontent"><b>Repaso + práctica</b><span>1er examen parcial · Unidad 1</span></div>
+<div class="deliver">EXAMEN PARCIAL 1</div></div><div class="week ">
+<div class="wn">06</div><div class="dates"><b>14 OCT</b> · Miércoles<br><b>16 OCT</b> · Viernes</div>
+<div class="wcontent"><b>Llaves PK/FK</b><span>Mapping y claves primarias</span></div>
+<div class="deliver">Ejercicio #3 + AVANCE 3</div></div><div class="week ">
+<div class="wn">07</div><div class="dates"><b>21 OCT</b> · Miércoles<br><b>23 OCT</b> · Viernes</div>
+<div class="wcontent"><b>E-R → tablas</b><span>Diagramas E-R y reducción</span></div>
+<div class="deliver">Ejercicio #4 + AVANCE 4</div></div><div class="week ">
+<div class="wn">08</div><div class="dates"><b>28 OCT</b> · Miércoles<br><b>30 OCT</b> · Viernes</div>
+<div class="wcontent"><b>Generalización</b><span>Generalización y agregación</span></div>
+<div class="deliver">Ejercicio #5 + AVANCE 5</div></div><div class="week ">
+<div class="wn">09</div><div class="dates"><b>04 NOV</b> · Miércoles<br><b>06 NOV</b> · Viernes</div>
+<div class="wcontent"><b>INSERT + SELECT</b><span>Introducción al modelo relacional</span></div>
+<div class="deliver">Ejercicio #6 + AVANCE 6</div></div><div class="week ">
+<div class="wn">10</div><div class="dates"><b>11 NOV</b> · Miércoles<br><b>13 NOV</b> · Viernes</div>
+<div class="wcontent"><b>Repaso + práctica SQL</b><span>2º examen parcial · U2 y 3.1</span></div>
+<div class="deliver">EXAMEN PARCIAL 2</div></div><div class="week ">
+<div class="wn">11</div><div class="dates"><b>18 NOV</b> · Miércoles<br><b>20 NOV</b> · Viernes</div>
+<div class="wcontent"><b>Álgebra relacional → SQL</b><span>Álgebra relacional</span></div>
+<div class="deliver">Ejercicio #7 + AVANCE 7</div></div><div class="week ">
+<div class="wn">12</div><div class="dates"><b>25 NOV</b> · Miércoles<br><b>27 NOV</b> · Viernes</div>
+<div class="wcontent"><b>VIEW + UPDATE/DELETE</b><span>Cálculo relacional, modificación y vistas</span></div>
+<div class="deliver">Ejercicio #8 + AVANCE 8</div></div><div class="week ">
+<div class="wn">13</div><div class="dates"><b>02 DIC</b> · Miércoles<br><b>04 DIC</b> · Viernes</div>
+<div class="wcontent"><b>Dependencias funcionales</b><span>Dependencias funcionales</span></div>
+<div class="deliver">Ejercicio #9 + AVANCE 9</div></div><div class="week ">
+<div class="wn">14</div><div class="dates"><b>09 DIC</b> · Miércoles<br><b>11 DIC</b> · Viernes</div>
+<div class="wcontent"><b>Normalización</b><span>1FN, 2FN, 3FN y BCNF</span></div>
+<div class="deliver">Ejercicio #10 + AVANCE 10</div></div><div class="week vac">
+<div class="wn">VAC</div><div class="dates"><b>16 DIC</b> · Miércoles<br><b>01 ENE</b> · Viernes</div>
+<div class="wcontent"><b>VACACIONES</b><span>Periodo vacacional</span></div>
+<div class="deliver">Sin sesiones</div></div><div class="week ">
+<div class="wn">15</div><div class="dates"><b>06 ENE</b> · Miércoles<br><b>08 ENE</b> · Viernes</div>
+<div class="wcontent"><b>Entrega final + práctica</b><span>Normalización II + SQL/QBE/Quel + 3er parcial</span></div>
+<div class="deliver">ENTREGA FINAL + EXAMEN 3</div></div></div></section>
+<section id="proyecto"><div class="panel"><h2>Proyecto integrador</h2><p>El producto se construye de forma incremental y cada avance debe corresponder con la etapa trabajada.</p><div class="progress"><i></i></div><p><b>Propuesta → Avances 1–10 → Entrega final</b></p>
+<div class="grid"><div class="card"><h3>Propuesta · 18 SEP</h3><p>Problema, alcance, usuarios, datos y justificación.</p></div><div class="card"><h3>Avances · 25 SEP–11 DIC</h3><p>Modelado, tablas, SQL, consultas, dependencias y normalización.</p></div><div class="card"><h3>Entrega final · 06 ENE</h3><p>Producto integrado, documentación, evidencias y repositorio.</p></div></div>
+<div class="alert success"><b>Meta semanal:</b> terminar la evidencia de la semana y dejar registrado el cambio realizado en el proyecto.</div></div></section>
+<section id="evaluacion"><div class="panel"><h2>Evaluación</h2><div class="kpis"><div class="kpi"><b>30%</b><span>Conocimiento</span></div><div class="kpi"><b>35%</b><span>Desempeño</span></div><div class="kpi"><b>35%</b><span>Producto</span></div><div class="kpi"><b>0%</b><span>Diagnóstico</span></div></div>
+<div class="grid"><div class="card"><h3>Conocimiento · 30%</h3><p>3 exámenes parciales de 10% cada uno.</p></div><div class="card"><h3>Desempeño · 35%</h3><p>Investigación teórica 20% + desempeño de laboratorio 15%.</p></div><div class="card"><h3>Producto · 35%</h3><p>Ejercicios 15% + propuesta 2% + avances 10% + entrega final 8%.</p></div></div><div class="alert"><b>Diagnóstico inicial:</b> identifica conocimientos previos y no tiene valor numérico.</div></div></section>
+<section id="unidades"><div class="panel"><h2>Mapa de unidades</h2><div class="grid"><article class="unit"><div class="unitnum">01</div><div><h3>Unidad 01 · Introducción</h3>
+<p>Conceptos básicos · niveles de abstracción · modelos · esquemas · DDL/DML</p><button onclick="showTab('descargas')">Materiales ↗</button></div></article><article class="unit"><div class="unitnum">02</div><div><h3>Unidad 02 · Modelo Entidad-Relación</h3>
+<p>Mapping · llaves · E-R · generalización · agregación</p><button onclick="showTab('descargas')">Materiales ↗</button></div></article><article class="unit"><div class="unitnum">03</div><div><h3>Unidad 03 · Modelo Relacional</h3>
+<p>Estructuras · álgebra relacional · cálculo · vistas</p><button onclick="showTab('descargas')">Materiales ↗</button></div></article><article class="unit"><div class="unitnum">04</div><div><h3>Unidad 04 · Diseño de Bases de Datos</h3>
+<p>Dependencias funcionales · normalización · 1FN–BCNF · 4FN–5FN</p><button onclick="showTab('descargas')">Materiales ↗</button></div></article><article class="unit"><div class="unitnum">05</div><div><h3>Unidad 05 · Lenguajes Relacionales Comerciales</h3>
+<p>SQL · QBE · Quel · comparación de lenguajes</p><button onclick="showTab('descargas')">Materiales ↗</button></div></article></div></div></section>
+<section id="descargas"><div class="panel"><h2>📥 Material académico</h2><p>Documentos, guías, posters, infografías y banners del curso.</p><div class="dls"><a class="dl" href="01_Bienvenida.pdf" download><span>📘 Bienvenida</span><small>Descargar</small></a><a class="dl" href="02_Encuadre.pdf" download><span>📋 Encuadre</span><small>Descargar</small></a><a class="dl" href="03_Plan_de_Clase.pdf" download><span>🗓️ Plan de clase</span><small>Descargar</small></a><a class="dl" href="04_Plan_de_Evaluacion.pdf" download><span>📊 Plan de evaluación</span><small>Descargar</small></a><a class="dl" href="05_Guias_de_Laboratorio.pdf" download><span>🧪 Guías de laboratorio</span><small>Descargar</small></a><a class="dl" href="06_Guia_XAMPP_MySQLWorkbench.pdf" download><span>⚙️ Guía XAMPP + Workbench</span><small>Descargar</small></a><a class="dl" href="07_Guia_GitHub_Proyecto.pdf" download><span>🐙 Guía GitHub</span><small>Descargar</small></a><a class="dl" href="Poster_Unidad_1.png" download><span>Poster · Unidad 1</span><small>Descargar</small></a><a class="dl" href="Poster_Unidad_2.png" download><span>Poster · Unidad 2</span><small>Descargar</small></a><a class="dl" href="Poster_Unidad_3.png" download><span>Poster · Unidad 3</span><small>Descargar</small></a><a class="dl" href="Poster_Unidad_4.png" download><span>Poster · Unidad 4</span><small>Descargar</small></a><a class="dl" href="Poster_Unidad_5.png" download><span>Poster · Unidad 5</span><small>Descargar</small></a><a class="dl" href="Infografia_Ruta_Semanal.png" download><span>Infografía · Ruta semanal</span><small>Descargar</small></a><a class="dl" href="Infografia_Proyecto.png" download><span>Infografía · Proyecto</span><small>Descargar</small></a><a class="dl" href="Infografia_Herramientas.png" download><span>Infografía · Herramientas</span><small>Descargar</small></a><a class="dl" href="Infografia_Evaluacion.png" download><span>Infografía · Evaluación</span><small>Descargar</small></a><a class="dl" href="Banner_Bienvenida.png" download><span>Banner · Bienvenida</span><small>Descargar</small></a><a class="dl" href="Banner_Proyecto.png" download><span>Banner · Proyecto</span><small>Descargar</small></a><a class="dl" href="Banner_Laboratorio.png" download><span>Banner · Laboratorio</span><small>Descargar</small></a></div></div></section>
+</main><footer><b>UNIVERSIDAD PRIVADA DEL ESTADO DE MÉXICO</b><br>Bases de Datos Relacionales · IS0737 · 7.º semestre · Periodo 27/1</footer>
+<script>function showTab(id,btn){document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}</script>
+</body></html>
